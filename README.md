@@ -19,7 +19,7 @@ The bottom part of the app's main page has entry fields for a new channel, as we
 
 - Print To Log. Useful in Visual Studio only. Shows diagnostic messages produced using Debug.WriteLine instructions.
 
-- MessageBox. Displays a DisplayEntry dialogbox.
+- MessageBox. Displays a DisplayAlert dialogbox.
 
 - About. Displays a second, separate "About" page.
 
