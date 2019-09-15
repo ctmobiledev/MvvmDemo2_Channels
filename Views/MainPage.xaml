@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Title="MvvmDemo2 - &quot;Channels&quot;"
+             mc:Ignorable="d"
+             xmlns:vmodel="clr-namespace:MvvmDemo2.ViewModels"
+             x:Class="MvvmDemo2.Views.MainPage">
+
+    <!-- Credits:
+         https://forums.xamarin.com/discussion/72970/listview-selecteditem-using-mvvm-and-xaml        
+    -->
+    
+    <!-- Declaring the VM here saves a step in the C# code, plus you can see the connection 
+         with the xmlns above. Don't forget to set the xmlns tag to match! -->
+    <ContentPage.BindingContext>
+        <vmodel:MainPageViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor">Black</Setter>
+                <Setter Property="FontSize">Large</Setter>
+                <Setter Property="VerticalOptions">Center</Setter>
+                <Setter Property="Margin">5,0,5,0</Setter>
+            </Style>
+            <Style Class="HeaderLabel" TargetType="Label">
+                <Setter Property="TextColor">Black</Setter>
+                <Setter Property="FontSize">Medium</Setter>
+                <Setter Property="VerticalOptions">Center</Setter>
+                <Setter Property="Margin">5,0,5,0</Setter>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor">Blue</Setter>
+                <Setter Property="FontSize">Large</Setter>
+                <Setter Property="VerticalOptions">Center</Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="TextColor">Black</Setter>
+                <Setter Property="FontSize">Small</Setter>
+                <Setter Property="VerticalOptions">Center</Setter>
+                <Setter Property="BackgroundColor">Blue</Setter>
+                <Setter Property="TextColor">White</Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Label Text="LIST OF CHANNELS" FontAttributes="Bold" Margin="15,10,0,0"/>
+
+        <Grid Margin="10,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Data -->
+            <Label Grid.Row="0" Grid.Column="0" Text="Callsign" StyleClass="HeaderLabel"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="License City" StyleClass="HeaderLabel"/>
+            <Label Grid.Row="0" Grid.Column="2" Text="Channel Num" StyleClass="HeaderLabel"/>
+            <Label Grid.Row="0" Grid.Column="3" Text="No. Cable Sys." StyleClass="HeaderLabel"/>
+        </Grid>
+
+        <!-- To set the ItemsSource in code would require an x:Name attribute -->
+        <!-- ItemsSource needs either an OC or a List -->
+        <!-- NOTE: ANYTHING THAT SETS A PROPERTY VALUE *MUST* USE MODE=TWO-WAY TO PREVENT NULL EXCEPTIONS -->
+        <ListView ItemsSource="{Binding Channels}" SelectedItem="{Binding SelectedChannel, Mode=TwoWay}" HeightRequest="400" BackgroundColor="CornflowerBlue">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="10,0,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Data -->
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Callsign}"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding LicenseCity}"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding ChannelNum}"/>
+                            <Entry Grid.Row="0" Grid.Column="3" Text="{Binding CableSystemsCount}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Margin="10,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Data -->
+            <Entry Grid.Row="0" Grid.Column="0" Text="{Binding Callsign_Entered, Mode=TwoWay}" Placeholder="Callsign" />
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding LicenseCity_Entered, Mode=TwoWay}" Placeholder="City" />
+            <Entry Grid.Row="0" Grid.Column="2" Text="{Binding ChannelNum_Entered, Mode=TwoWay}" Placeholder="Channel No." />
+        </Grid>
+
+        <Grid Margin="10,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Data -->
+            <!-- Each of these operate on a public property defined within the ViewModel class. -->
+            <!-- Note: even command delegates are bound! -->
+            <Button Grid.Row="0" Grid.Column="0" Text="Add" Command="{Binding AddChannelCommand}" CommandParameter="{Binding NewChannelEntry}"/>
+            <Button Grid.Row="0" Grid.Column="1" Text="Delete" Command="{Binding DeleteChannelCommand}" CommandParameter="{Binding SelectedChannel}"/>
+            <Button Grid.Row="0" Grid.Column="2" Text="Reset" Command="{Binding ClearEntryFieldsCommand}" />
+            <Button Grid.Row="1" Grid.Column="0" Text="Print To Log" Command="{Binding PrintChannelsCommand}"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="MessageBox" Command="{Binding ShowDisplayAlertCommand}"/>
+            <Button Grid.Row="1" Grid.Column="2" Text="About" Command="{Binding ShowAboutPageCommand}"/>
+
+        </Grid>
+
+    </StackLayout>
+
+</ContentPage>

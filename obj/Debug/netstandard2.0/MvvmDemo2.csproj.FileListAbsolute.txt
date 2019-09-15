@@ -1,0 +1,13 @@
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\bin\Debug\netstandard2.0\MvvmDemo2.deps.json
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\bin\Debug\netstandard2.0\MvvmDemo2.dll
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\bin\Debug\netstandard2.0\MvvmDemo2.pdb
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\MvvmDemo2.csprojAssemblyReference.cache
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\MvvmDemo2.csproj.CoreCompileInputs.cache
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\MvvmDemo2.AssemblyInfoInputs.cache
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\MvvmDemo2.AssemblyInfo.cs
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\MvvmDemo2.dll
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\MvvmDemo2.pdb
+C:\Xamarin_Projects\MvvmDemo2\MvvmDemo2\MvvmDemo2\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
