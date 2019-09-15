@@ -24,6 +24,7 @@ The bottom part of the app's main page has entry fields for a new channel, as we
 - About. Displays a second, separate "About" page.
 
 
+
 DISCLAIMERS
 
 - This is intentionally a simple app, and has no user input error checking, no exception trapping, or any of the other nice things that make a production app. 
